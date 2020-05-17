@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zero.system.mapper.SalaryMapper">
+
+
+    <select id="querySalary" parameterType="string" resultType="com.zero.system.entity.Salary">
+        select
+        *
+        from salary
+        where name = #{name}
+    </select>
+
+    <insert id="insertSalary" parameterType="com.zero.system.entity.Salary">
+        insert into salary(name, min_salary, vacation, welfare, other, total_salary, pid)
+        values (#{Salary.name}, #{Salary.min_salary}, #{Salary.vacation}, #{Salary.welfare}, #{Salary.other}, #{Salary.total_salary}, #{Salary.pid})
+    </insert>
+</mapper>

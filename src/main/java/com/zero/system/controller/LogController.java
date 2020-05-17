@@ -5,6 +5,7 @@ import com.zero.system.service.LogService;
 import com.zero.system.util.AjaxResult;
 import com.zero.system.util.Data;
 import com.zero.system.util.PageBean;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -27,6 +28,7 @@ public class LogController {
      * 日志页面
      * @return
      */
+    @ApiOperation(value = "日志页面")
     @GetMapping("/log")
     public String log(){
         return "manager/log/logList";
@@ -41,6 +43,7 @@ public class LogController {
      * @param logTime
      * @return
      */
+    @ApiOperation(value = "异步加载日志列表")
     @RequestMapping("/logList")
     @ResponseBody
     public Object adminList(@RequestParam(value = "page", defaultValue = "1") Integer pageno,
@@ -69,6 +72,7 @@ public class LogController {
     }
 
 
+    @ApiOperation(value = "删除")
     @PostMapping("/delLog")
     @ResponseBody
     public AjaxResult delLog(Data data){

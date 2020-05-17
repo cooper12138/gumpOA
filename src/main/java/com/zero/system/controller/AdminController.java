@@ -4,6 +4,7 @@ import com.zero.system.entity.Admin;
 import com.zero.system.service.AdminService;
 import com.zero.system.service.RoleService;
 import com.zero.system.util.*;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ public class AdminController {
      *
      * @return
      */
+    @ApiOperation(value = "跳转管理员页面", notes = "跳转管理员页面")
     @GetMapping("/admin")
     public String admin() {
         return "manager/admin/adminList";
@@ -47,6 +49,7 @@ public class AdminController {
      * @param email
      * @return
      */
+    @ApiOperation(value = "异步加载管理员列表", notes = "异步加载管理员列表")
     @RequestMapping("/adminList")
     @ResponseBody
     public Object adminList(@RequestParam(value = "page", defaultValue = "1") Integer pageno,
@@ -77,6 +80,7 @@ public class AdminController {
      *
      * @return
      */
+    @ApiOperation(value = "跳转添加管理员页面", notes = "跳转添加管理员页面")
     @GetMapping("/addAdmin")
     public String addAdmin(String type, Integer id, Model model) {
         if (type != null && type.equals("edit")) {
@@ -93,6 +97,7 @@ public class AdminController {
      * @param status
      * @return
      */
+    @ApiOperation(value = "添加管理员 修改管理员", notes = "添加管理员 修改管理员")
     @PostMapping("/addAdmin")
     @ResponseBody
     public AjaxResult submitAddAdmin(Admin admin, String status) {
@@ -153,6 +158,7 @@ public class AdminController {
      * @param data
      * @return
      */
+    @ApiOperation(value = "删除管理员", notes = "删除管理员")
     @PostMapping("/delAdmin")
     @ResponseBody
     public AjaxResult delAdmin(Data data) {

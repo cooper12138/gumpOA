@@ -6,6 +6,7 @@ import com.zero.system.service.AdminService;
 import com.zero.system.service.RoleService;
 import com.zero.system.util.AjaxResult;
 import com.zero.system.util.Const;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,7 @@ public class DispatherController {
      *
      * @return
      */
+    @ApiOperation(value = "跳转登录界面")
     @GetMapping("/login")
     public String login() {
         return "manager/login";
@@ -83,6 +85,7 @@ public class DispatherController {
      * @param session
      * @return
      */
+    @ApiOperation(value = "登出")
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
@@ -94,6 +97,7 @@ public class DispatherController {
      *
      * @return
      */
+    @ApiOperation(value = "跳转修改密码页面")
     @GetMapping("/password")
     public String password() {
         return "manager/common/password";
@@ -108,6 +112,7 @@ public class DispatherController {
      * @param repassword
      * @return
      */
+    @ApiOperation(value = "修改密码")
     @PostMapping("/editPassword")
     @ResponseBody
     public AjaxResult editPassword(HttpSession session, String password, String newpassword, String repassword) {
@@ -130,6 +135,7 @@ public class DispatherController {
         return ajaxResult;
     }
 
+    @ApiOperation(value = "信息")
     @GetMapping("/info")
     public String info(HttpSession session, Model model) {
         Admin admin = (Admin) session.getAttribute(Const.ADMIN);
@@ -138,6 +144,7 @@ public class DispatherController {
         return "manager/common/info";
     }
 
+    @ApiOperation(value = "修改信息")
     @PostMapping("/editInfo")
     @ResponseBody
     public AjaxResult editInfo(Admin admin, HttpSession session) {

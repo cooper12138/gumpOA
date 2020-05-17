@@ -6,9 +6,7 @@ import com.zero.system.util.PageBean;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 登录接口
- */
+
 public interface LogService {
     void insertByLog(Log log);
 

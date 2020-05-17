@@ -8,6 +8,7 @@ import com.zero.system.service.TreeMenuService;
 import com.zero.system.util.AjaxResult;
 import com.zero.system.util.Const;
 import com.zero.system.util.Data;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,7 @@ public class PermissionController {
      * 跳转登录界面
      * @return
      */
+    @ApiOperation(value = "跳转登录界面")
     @GetMapping("/permission")
     public String permission(){
         return "manager/permission/permissionList";
@@ -50,6 +52,7 @@ public class PermissionController {
      * @param session
      * @return
      */
+    @ApiOperation(value = "异步加载权限树")
     @GetMapping("/permissionList")
     @ResponseBody
     public Object permissionList(HttpSession session,Integer id){
@@ -79,6 +82,7 @@ public class PermissionController {
      * @param model
      * @return
      */
+    @ApiOperation(value = "跳转页面")
     @GetMapping("/addPermission")
     public String addPermission(String type, Integer id, Model model,HttpSession session){
         //加载icon列表,存入session
@@ -102,6 +106,7 @@ public class PermissionController {
      * @param treeMenu
      * @return
      */
+    @ApiOperation(value = "添加修改权限")
     @PostMapping("/addPermission")
     @ResponseBody
     public AjaxResult submitAddPermission(TreeMenu treeMenu){
@@ -154,6 +159,7 @@ public class PermissionController {
      * @param data
      * @return
      */
+    @ApiOperation(value = "删除权限")
     @PostMapping("/delPermission")
     @ResponseBody
     public AjaxResult delPermission(Data data){
@@ -178,6 +184,7 @@ public class PermissionController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "给角色分配权限")
     @PostMapping("/allotPer")
     @ResponseBody
     public AjaxResult allotPre(Data data,Integer id){

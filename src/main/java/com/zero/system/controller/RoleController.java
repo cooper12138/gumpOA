@@ -7,6 +7,7 @@ import com.zero.system.util.AjaxResult;
 import com.zero.system.util.Const;
 import com.zero.system.util.Data;
 import com.zero.system.util.PageBean;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,7 @@ public class RoleController {
      * @param rid
      * @return
      */
+    @ApiOperation(value = "异步加载角色列表")
     @RequestMapping("/roleList")
     @ResponseBody
     public Object roleList(@RequestParam(value = "page", defaultValue = "1") Integer pageno,
@@ -69,6 +71,7 @@ public class RoleController {
      * @param data
      * @return
      */
+    @ApiOperation(value = "删除角色")
     @PostMapping("/delRole")
     @ResponseBody
     public AjaxResult delRole(Data data){
@@ -89,6 +92,7 @@ public class RoleController {
      * @param model
      * @return
      */
+    @ApiOperation(value = "跳转添加角色页面")
     @GetMapping("/addRole")
     public String addRole(String type, Integer id, Model model){
         if(type != null && type.equals("edit")){
@@ -104,6 +108,7 @@ public class RoleController {
      * @param role
      * @return
      */
+    @ApiOperation(value = "添加角色")
     @PostMapping("/addRole")
     @ResponseBody
     public AjaxResult submitAddRole(Role role){
@@ -139,6 +144,7 @@ public class RoleController {
         return ajaxResult;
     }
 
+    @ApiOperation(value = "")
     @GetMapping("/allotPer")
     public String allotPer(Integer id,Model model){
         model.addAttribute("id",id);
